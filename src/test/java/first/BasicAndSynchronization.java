@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-public class PastebinTest {
+public class BasicAndSynchronization {
 
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\bin\\chromedriver.exe");
@@ -27,8 +27,8 @@ public class PastebinTest {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);*/
 
         driver.get("https://pastebin.com");
-        new WebDriverWait(driver, 10).until(CustomConditions.expectedCondition());
 
+        new WebDriverWait(driver, 10).until(CustomConditions.expectedCondition());
 
         WebElement textform = waitForElementLocatedBy(driver, By.id("postform-text")); // поиск с ожиданием (Explicit Waits)
         textform.sendKeys("Hello Word!");
@@ -51,7 +51,7 @@ public class PastebinTest {
                 .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("/html/body/div[1]/div[2]/div[2]/ul/li")));*/
         System.out.println("Count of pastes: " + publicpastes.size());
 
-        Thread.sleep(5000);
+//        Thread.sleep(5000); нежелательно юзать. Можно только чтобы отследить то, что сделал тест
         driver.quit();
     }
 
