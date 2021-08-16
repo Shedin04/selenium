@@ -35,7 +35,7 @@ public class TransfersPage extends AbstractPage{
     }
 
     public List filterByCountryTransfersPage(String countryName){
-        new WebDriverWait(driver,5).until(ExpectedConditions.visibilityOf(countrySearchForm));
+        new WebDriverWait(driver,WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(countrySearchForm));
         countrySearchForm.sendKeys(countryName);
         return listOfCountriesResults;
     }

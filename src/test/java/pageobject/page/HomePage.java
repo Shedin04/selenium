@@ -25,7 +25,7 @@ public class HomePage extends AbstractPage{
     @Override
     public HomePage openPage() {
         driver.get(HOMEPAGE_URL);
-        new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(transfersButton));
+        new WebDriverWait(driver,WAIT_TIMEOUT_SECONDS).until(ExpectedConditions.visibilityOf(transfersButton));
         return this;
     }
 
