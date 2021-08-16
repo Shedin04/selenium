@@ -19,7 +19,7 @@ public class TestNG {
 
     @BeforeMethod(alwaysRun = true) // перед каждым методом открываем новый браузер
     public void browserSetup(){
-        System.setProperty("webdriver.chrome.driver", "D:\\selenium drivers\\bin\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","D:\\selenium drivers\\bin\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
