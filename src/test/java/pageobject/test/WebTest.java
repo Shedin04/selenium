@@ -40,8 +40,16 @@ public class WebTest {
         Assert.assertEquals(actualCountOfTransfers.get(0).getText(),expected,"Found no expected text!");
     }
 
+    @Test(description = "Next results and matches button")
+    public void clickNextResultAndMatchesButton(){
+            new HomePage(driver).openStartedPage().
+                    clickNextResultAndMatchesButton(10);
+        //Assert.assertEquals(actualCountOfTransfers.get(0).getText(),expected,"Found no expected text!");
+    }
+
     @AfterMethod(alwaysRun = true)
-    public void closeBrowser() {
+    public void closeBrowser() throws InterruptedException {
+        Thread.sleep(5000);
         driver.quit();
         driver=null;
     }

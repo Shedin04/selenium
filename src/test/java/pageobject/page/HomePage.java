@@ -16,6 +16,8 @@ public class HomePage {
     @FindBy(xpath = "//li[@id='menu-id-384']/a")
     private WebElement transfersButton;
 
+    @FindBy(css = "#aazone\\.gamesMainZone ul.right > li > a")
+    private WebElement nextResultAndMatchesButton;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +27,13 @@ public class HomePage {
     public HomePage openStartedPage(){
         driver.get(HOMEPAGE_URL);
         new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(transfersButton));
+        return this;
+    }
+
+    public HomePage clickNextResultAndMatchesButton(int countOfClicks) {
+        for (int i = 0; i < countOfClicks; i++) {
+            nextResultAndMatchesButton.click();
+        }
         return this;
     }
 
