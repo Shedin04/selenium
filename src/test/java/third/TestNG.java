@@ -23,11 +23,11 @@ public class TestNG {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
-        driver.get("https://football24.ua/");
     }
 
     @Test(description = "Count of transfers on the Transfers page")
     public void transfersPageHasResults(){
+        driver.get("https://football24.ua/");
         WebElement transfersButton = waitForElementLocatedBy(driver, By.xpath("//li[@id='menu-id-384']/a"));
         transfersButton.click();
         List<WebElement> countOfTransfers = driver.findElements(By.xpath("//div[@id='aazone.transfersZone']/div[@class='small-12 grid-container transfers-card']"));
