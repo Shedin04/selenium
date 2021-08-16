@@ -26,15 +26,14 @@ public class WebTest {
 
     @Test(description = "Count of transfers on the Transfers page")
     public void transfersPageCountOfTransfers(){
-        int actualCountOfTransfers = new HomePage(driver).openStartedPage().clickTransferButton().
-                countOfTransfersOnThePage();
+        int actualCountOfTransfers = new HomePage(driver).openPage().clickTransferButton().countOfTransfersOnThePage();
         Assert.assertEquals(actualCountOfTransfers,10, "Found no 10 elements!");
     }
 
     @Test(description = "Use filter by country on the Transfers page")
     public void transfersPageFilterByCountry(){
         String expected = "Україна";
-        List<WebElement> actualCountOfTransfers = new HomePage(driver).openStartedPage().
+        List<WebElement> actualCountOfTransfers = new HomePage(driver).openPage().
                 clickTransferButton().
                 filterByCountryTransfersPage(expected);
         Assert.assertEquals(actualCountOfTransfers.get(0).getText(),expected,"Found no expected text!");
@@ -42,8 +41,7 @@ public class WebTest {
 
     @Test(description = "Next results and matches button")
     public void clickNextResultAndMatchesButton(){
-            new HomePage(driver).openStartedPage().
-                    clickNextResultAndMatchesButton(10);
+            new HomePage(driver).openPage().clickNextResultAndMatchesButton(10);
         //Assert.assertEquals(actualCountOfTransfers.get(0).getText(),expected,"Found no expected text!");
     }
 

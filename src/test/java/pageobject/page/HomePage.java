@@ -8,10 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class HomePage {
+public class HomePage extends AbstractPage{
 
     private static final String HOMEPAGE_URL = "https://football24.ua/";
-    private WebDriver driver;
 
     @FindBy(xpath = "//li[@id='menu-id-384']/a")
     private WebElement transfersButton;
@@ -20,11 +19,11 @@ public class HomePage {
     private WebElement nextResultAndMatchesButton;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
-    public HomePage openStartedPage(){
+    @Override
+    public HomePage openPage() {
         driver.get(HOMEPAGE_URL);
         new WebDriverWait(driver,10).until(ExpectedConditions.visibilityOf(transfersButton));
         return this;
