@@ -27,10 +27,12 @@ public class PastebinTest {
 
     @Test(description = "Next results and matches button")
     public void clickNextResultAndMatchesButton() {
-        new PastebinMainPage(driver).openPage().addTextInForm("Hello from WebDriver")
+        String text = "Hello from WebDriver";
+        new PastebinMainPage(driver).openPage().clickSpamButton().addTextInForm(text)
             .choose10MinExpiration()
                 .pasteNameOrTitleForm("helloweb")
-                    .createNewPasteButton();
+                    .createNewPasteButton().clickSpamButton();
+        Assert.assertEquals((driver.findElement(By.className("de1"))).getText(), text, "Text is incorrect");
     }
 
     @AfterMethod(alwaysRun = true)

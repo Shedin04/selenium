@@ -1,5 +1,6 @@
 package icanwintask.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,6 +28,9 @@ public class PastebinMainPage {
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement createNewPasteButton;
 
+    @FindBy(xpath = "//button[text()='AGREE']")
+    private WebElement spamButton;
+
     public PastebinMainPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -34,7 +38,13 @@ public class PastebinMainPage {
 
     public PastebinMainPage openPage() {
         driver.get(HOMEPAGE_URL);
-        new WebDriverWait(driver,WAIT_TIMEOUT_SECONDS);
+        return this;
+    }
+
+    public PastebinMainPage clickSpamButton(){
+        new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.elementToBeClickable(spamButton));
+        spamButton.click();
         return this;
     }
 
