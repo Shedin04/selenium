@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TestNG {
     private WebDriver driver;
@@ -28,6 +29,9 @@ public class TestNG {
     @Test(description = "Count of transfers on the Transfers page")
     public void transfersPageHasResults(){
         driver.get("https://football24.ua/");
+/*
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); // Implicit Wait (Неявный): максимум 10 секунд ожидания для каждого поиска
+*/
         WebElement transfersButton = waitForElementLocatedBy(driver, By.xpath("//li[@id='menu-id-384']/a"));
         transfersButton.click();
         List<WebElement> countOfTransfers = driver.findElements(By.xpath("//div[@id='aazone.transfersZone']/div[@class='small-12 grid-container transfers-card']"));
@@ -40,7 +44,7 @@ public class TestNG {
         driver=null;
     }
 
-    private static WebElement waitForElementLocatedBy(WebDriver driver, By by) {
+    private static WebElement waitForElementLocatedBy(WebDriver driver, By by) { // Explicit Wait (Явный): на один конкретный поиск элемента
         return new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(by));
     }
